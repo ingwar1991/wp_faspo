@@ -27,7 +27,6 @@ class FasPo_Image {
         $this->adjustImgWidth( $imageUrl, $feedKey );
 
         $imagePath = FasPo_Utils::getInstance()->getImagePath( md5( $imageUrl ) . '.png' );
-        var_dump( 'Image path: ' . $imagePath );
         if ( !file_exists( $imagePath ) ) {
             $data = file_get_contents( $imageUrl );
             if ( !$data ) {
@@ -35,7 +34,6 @@ class FasPo_Image {
             }
 
             $img = imagecreatefromstring( $data );
-            var_dump( "Image: ", $img );
             imagealphablending( $img, false );
             imagesavealpha( $img, true );
             if ( !imagepng( $img, $imagePath ) ) {
@@ -54,11 +52,8 @@ class FasPo_Image {
 
         $attachId = wp_insert_attachment( $attachment, $imagePath );
         if ( is_wp_error( $attachId ) || $attachId < 1 ) {
-            var_dump( 'Image Error: ' . $attachId->get_error_messages() );
-            die;
             return 0;
         }
-        var_dump( 'Image Attachment ID: ' . $attachId );
 
         require_once( ABSPATH . 'wp-admin/includes/image.php' );
         $attachData = wp_generate_attachment_metadata( $attachId, $imagePath );

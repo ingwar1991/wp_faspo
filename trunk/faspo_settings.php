@@ -156,7 +156,7 @@ class FasPo_Settings {
     }
 
     private function fixFeedUrlData( &$settings ) {
-        if ( strpos( $settings['url'], 'app.newsworthy.ai' ) === false ) {
+        if ( filter_var( $settings['url'], FILTER_VALIDATE_URL ) === false ) {
             unset( $settings['url'] );
         }
     }

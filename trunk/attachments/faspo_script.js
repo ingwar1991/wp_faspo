@@ -22,6 +22,13 @@
                     urlInp = tab.find( 'input[name="url"]' ),
                     visibilityInp = tab.find( 'select[name="visibility"]' ),
                     passwordInp = tab.find( 'input[name="password"]' );
+        
+                var regexp = new RegExp( '^((http|https):\\/\\/)*(www.)*[a-zA-Z0-9-.]+\\.[a-zA-Z]{2,6}(\\/)*[-a-zA-Z0-9@:;\*%_\\+,.~#?&//=]*$' );
+                if ( !urlInp.val() || !regexp.test( urlInp.val() ) ) {
+                    urlInp.parents( '.form-field' ).addClass( 'faspo-error' );
+                    tabHasError = true;
+                }
+
 
                 if ( visibilityInp.val() == 'password' && !passwordInp.val() ) {
                     visibilityInp.parents( '.form-field' ).addClass( 'faspo-error' );
