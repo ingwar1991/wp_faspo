@@ -1,0 +1,6 @@
+# SVN
+.svn/
+.svnignore
+
+# Backup files
+*.bak
