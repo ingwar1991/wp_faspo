@@ -14,7 +14,7 @@
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
 
-define( 'faspoPluginVersion', '1.1' );
+define( 'faspoPluginVersion', '1.0' );
 
 require_once 'faspo_utils.php';
 require_once 'faspo_settings.php';
